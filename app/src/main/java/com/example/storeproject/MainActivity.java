@@ -17,7 +17,7 @@ import com.example.storeproject.fragment.MyFragment;
 import com.example.storeproject.fragment.ShopcalFragment;
 import com.example.storeproject.fragment.SpecialFragment;
 
-public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 
     private RadioGroup rgMain;
     private RadioButton rbHomeMain;
@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         rbShopcalMain = findViewById(R.id.rb_shopcal_main);
         rbMyMain = findViewById(R.id.rb_my_main);
         rgMain.setOnCheckedChangeListener(this);
-        llSearchMain.setOnClickListener(this);
         flMain = findViewById(R.id.fl_main);
     }
 
@@ -121,12 +120,5 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.ll_search_main:
-                Toast.makeText(this, "搜索", Toast.LENGTH_SHORT).show();
-                break;
-        }
-    }
+
 }
