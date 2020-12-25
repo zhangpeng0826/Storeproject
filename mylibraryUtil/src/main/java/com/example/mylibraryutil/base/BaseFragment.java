@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 public abstract class BaseFragment<T> extends Fragment implements BaseView{
-    private T presenter;
+    protected T presenter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

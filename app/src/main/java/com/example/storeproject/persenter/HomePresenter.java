@@ -9,10 +9,10 @@ import com.example.storeproject.contract.Contract;
 import com.example.storeproject.fragment.HomeFragment;
 import com.example.storeproject.model.HomeModel;
 
-public class HomePresenter extends BasePresenter<HomeFragment, HomeModel> implements Contract.IHomePresenter, BaseView {
+public class HomePresenter extends BasePresenter<HomeFragment, HomeModel> implements Contract.IHomePresenter {
     @Override
     public void getData() {
-        iModle.modelData(URLConstant.HomeURL, new HttpCallback<HomeBean>() {
+        getModel().modelData(URLConstant.HomeURL, new HttpCallback<HomeBean>() {
             @Override
             public void OnSuccess(HomeBean homeBean) {
                 iView.OnSuccess(homeBean.getData());
@@ -28,7 +28,6 @@ public class HomePresenter extends BasePresenter<HomeFragment, HomeModel> implem
     @Override
     protected HomeModel getModel() {
         HomeModel model = new HomeModel(this);
-
         return model;
     }
 }

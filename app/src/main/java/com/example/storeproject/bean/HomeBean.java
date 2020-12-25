@@ -524,7 +524,7 @@ public class HomeBean {
             private String item_pic_url;
             private String subtitle;
             private int topic_category_id;
-            private int price_info;
+            private Double price_info;
             private String read_count;
             private String scene_pic_url;
             private int topic_template_id;
@@ -588,11 +588,11 @@ public class HomeBean {
                 this.topic_category_id = topic_category_id;
             }
 
-            public int getPrice_info() {
+            public Double getPrice_info() {
                 return price_info;
             }
 
-            public void setPrice_info(int price_info) {
+            public void setPrice_info(Double price_info) {
                 this.price_info = price_info;
             }
 
