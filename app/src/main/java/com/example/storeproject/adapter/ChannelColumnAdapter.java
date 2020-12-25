@@ -12,46 +12,46 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.LayoutHelper;
-import com.alibaba.android.vlayout.layout.GridLayoutHelper;
+import com.alibaba.android.vlayout.layout.ColumnLayoutHelper;
 import com.bumptech.glide.Glide;
 import com.example.storeproject.R;
 import com.example.storeproject.bean.HomeBean;
 
 import java.util.ArrayList;
 
-public class ChannelGridAdapter extends DelegateAdapter.Adapter<ChannelGridAdapter.ViewHolder> {
-    private GridLayoutHelper gridLayoutHelper;
+
+public class ChannelColumnAdapter extends DelegateAdapter.Adapter<ChannelColumnAdapter.ViewHolder> {
+    private ColumnLayoutHelper columnLayoutHelper;
     private Context context;
     private ArrayList<HomeBean.DataBean.ChannelBean> channellist;
 
 
-    public ChannelGridAdapter(GridLayoutHelper gridLayoutHelper, Context context, ArrayList<HomeBean.DataBean.ChannelBean> channellist) {
-        this.gridLayoutHelper = gridLayoutHelper;
+    public ChannelColumnAdapter(ColumnLayoutHelper columnLayoutHelper, Context context, ArrayList<HomeBean.DataBean.ChannelBean> channellist) {
+        this.columnLayoutHelper = columnLayoutHelper;
         this.context = context;
         this.channellist = channellist;
     }
 
     @Override
     public LayoutHelper onCreateLayoutHelper() {
-        return gridLayoutHelper;
+        return columnLayoutHelper;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ChannelColumnAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_channel_helper, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        HomeBean.DataBean.ChannelBean channelBean = channellist.get(position);
-        Glide.with(context).load(channelBean.getIcon_url()).into(holder.ivChannel);
-        holder.tvChannel.setText(channelBean.getName());
+    public void onBindViewHolder(@NonNull ChannelColumnAdapter.ViewHolder holder, int position) {
+        Glide.with(context).load(channellist.get(position).getIcon_url()).into(holder.ivChannel);
+        holder.tvChannel.setText(channellist.get(position).getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onClickItemListener!=null){
+                if (onClickItemListener != null) {
                     onClickItemListener.onClick(position);
                 }
             }
@@ -73,13 +73,16 @@ public class ChannelGridAdapter extends DelegateAdapter.Adapter<ChannelGridAdapt
         }
     }
 
-    public interface OnClickItemListener{
+
+    public interface OnClickItemListener {
         void onClick(int position);
     }
-    private SearchLinearLayoutAdapter.OnClickItemListener onClickItemListener;
 
-    public void setOnClickItemListener(SearchLinearLayoutAdapter.OnClickItemListener onClickItemListener) {
+    private OnClickItemListener onClickItemListener;
+
+    public void setOnClickItemListener(OnClickItemListener onClickItemListener) {
         this.onClickItemListener = onClickItemListener;
     }
+
 
 }
