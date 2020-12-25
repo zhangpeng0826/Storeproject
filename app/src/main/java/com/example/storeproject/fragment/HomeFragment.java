@@ -12,11 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
+import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.example.mylibraryutil.base.BaseFragment;
 import com.example.mylibraryutil.base.BaseView;
 import com.example.storeproject.R;
 import com.example.storeproject.adapter.BannerLinearLayoutAdapter;
+import com.example.storeproject.adapter.ChannelGridAdapter;
 import com.example.storeproject.adapter.SearchLinearLayoutAdapter;
 import com.example.storeproject.bean.HomeBean;
 import com.example.storeproject.contract.Contract;
@@ -33,6 +35,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
     private BannerLinearLayoutAdapter bannerLinearLayoutAdapter;
     private DelegateAdapter adapter;
     private ArrayList<HomeBean.DataBean.BannerBean> bannerlist;
+    private ArrayList<HomeBean.DataBean.ChannelBean> channellist;
+    private ChannelGridAdapter channelGridAdapter;
 
 
     public void initListener() {
@@ -41,6 +45,14 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
             @Override
             public void onClick(int position) {
                 Toast.makeText(getActivity(), "搜索", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //首页 第三个 模块 网格 分类 监听
+        channelGridAdapter.setOnClickItemListener(new SearchLinearLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+                Toast.makeText(getActivity(), channellist.get(position).getName(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -66,9 +78,17 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
         bannerLinearLayoutAdapter = new BannerLinearLayoutAdapter(getActivity(),banner_linearLayoutHelper,bannerlist);
 
 
-
-
-
+        //首页 第三个 模块 网格 分类
+        channellist = new ArrayList<>();
+        GridLayoutHelper channel_gridLayoutHelper = new GridLayoutHelper(5);
+        channel_gridLayoutHelper.setItemCount(5);// 设置布局里Item个数
+        channel_gridLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        channel_gridLayoutHelper.setWeights(new float[]{20, 20, 20, 20, 20});//设置每行中 每个网格宽度 占 每行总宽度 的比例
+        channel_gridLayoutHelper.setVGap(20);// 控制子元素之间的垂直间距
+        channel_gridLayoutHelper.setHGap(40);// 控制子元素之间的水平间距
+        channel_gridLayoutHelper.setAutoExpand(false);//是否自动填充空白区域
+        channel_gridLayoutHelper.setSpanCount(5);// 设置每行多少个网格
+        channelGridAdapter = new ChannelGridAdapter(channel_gridLayoutHelper, getActivity(), channellist);
 
 
 
@@ -77,6 +97,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
         adapter = new DelegateAdapter(virtualLayoutManager, true);
         adapter.addAdapter(searchLinearLayoutAdapter);
         adapter.addAdapter(bannerLinearLayoutAdapter);
+        adapter.addAdapter(channelGridAdapter);
         rv.setAdapter(adapter);
     }
 
@@ -99,6 +120,14 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
     @Override
     public void OnSuccess(HomeBean.DataBean bean) {
         bannerlist.addAll(bean.getBanner());
+        channellist.addAll(bean.getChannel());
+        channelGridAdapter.notifyDataSetChanged();
+
+
+
+
+
+
         adapter.notifyDataSetChanged();
     }
 

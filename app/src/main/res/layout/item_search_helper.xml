@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
-        android:background="@color/gray"
+        android:background="@drawable/select_shap"
         android:id="@+id/ll_search_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
