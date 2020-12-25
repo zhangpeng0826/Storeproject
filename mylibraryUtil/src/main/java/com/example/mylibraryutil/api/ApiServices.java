@@ -1,4 +1,4 @@
-package com.example.storeproject.api;
+package com.example.mylibraryutil.api;
 
 import java.util.HashMap;
 

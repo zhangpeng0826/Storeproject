@@ -1,4 +1,4 @@
-package com.example.storeproject.utils;
+package com.example.mylibraryutil.utils;
 
 public class URLConstant {
     public static String BASEURL = "https://cdwan.cn/api/";

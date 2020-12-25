@@ -52,9 +52,6 @@ public class SearchLinearLayoutAdapter extends DelegateAdapter.Adapter<SearchLin
     public int getItemCount() {
         return 1;
     }
-
-
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         private LinearLayout llSearchMain;
         public ViewHolder(@NonNull View itemView) {

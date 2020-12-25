@@ -1,8 +1,10 @@
 package com.example.storeproject.bean;
 
+
 import java.util.List;
 
 public class HomeBean {
+
 
     /**
      * errno : 0
@@ -320,7 +322,7 @@ public class HomeBean {
             private int id;
             private String name;
             private String list_pic_url;
-            private int retail_price;
+            private Double retail_price;
 
             public int getId() {
                 return id;
@@ -346,11 +348,11 @@ public class HomeBean {
                 this.list_pic_url = list_pic_url;
             }
 
-            public int getRetail_price() {
+            public Double getRetail_price() {
                 return retail_price;
             }
 
-            public void setRetail_price(int retail_price) {
+            public void setRetail_price(Double retail_price) {
                 this.retail_price = retail_price;
             }
         }
@@ -359,7 +361,7 @@ public class HomeBean {
             private int id;
             private String name;
             private String list_pic_url;
-            private int retail_price;
+            private Double retail_price;
             private String goods_brief;
 
             public int getId() {
@@ -386,11 +388,11 @@ public class HomeBean {
                 this.list_pic_url = list_pic_url;
             }
 
-            public int getRetail_price() {
+            public Double getRetail_price() {
                 return retail_price;
             }
 
-            public void setRetail_price(int retail_price) {
+            public void setRetail_price(Double retail_price) {
                 this.retail_price = retail_price;
             }
 
@@ -411,7 +413,7 @@ public class HomeBean {
             private String pic_url;
             private int sort_order;
             private int is_show;
-            private int floor_price;
+            private Double floor_price;
             private String app_list_pic_url;
             private int is_new;
             private String new_pic_url;
@@ -473,11 +475,11 @@ public class HomeBean {
                 this.is_show = is_show;
             }
 
-            public int getFloor_price() {
+            public Double getFloor_price() {
                 return floor_price;
             }
 
-            public void setFloor_price(int floor_price) {
+            public void setFloor_price(Double floor_price) {
                 this.floor_price = floor_price;
             }
 
@@ -683,7 +685,7 @@ public class HomeBean {
                 private int id;
                 private String name;
                 private String list_pic_url;
-                private int retail_price;
+                private Double retail_price;
 
                 public int getId() {
                     return id;
@@ -709,11 +711,11 @@ public class HomeBean {
                     this.list_pic_url = list_pic_url;
                 }
 
-                public int getRetail_price() {
+                public Double getRetail_price() {
                     return retail_price;
                 }
 
-                public void setRetail_price(int retail_price) {
+                public void setRetail_price(Double retail_price) {
                     this.retail_price = retail_price;
                 }
             }

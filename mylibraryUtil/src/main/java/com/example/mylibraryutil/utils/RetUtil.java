@@ -1,8 +1,8 @@
-package com.example.storeproject.utils;
+package com.example.mylibraryutil.utils;
 
 
-import com.example.storeproject.api.ApiServices;
-import com.example.storeproject.callback.HttpCallback;
+import com.example.mylibraryutil.api.ApiServices;
+import com.example.mylibraryutil.callback.HttpCallback;
 import com.google.gson.Gson;
 
 import java.io.IOException;

@@ -13,28 +13,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
+import com.example.mylibraryutil.base.BaseFragment;
+import com.example.mylibraryutil.base.BaseView;
 import com.example.storeproject.R;
 import com.example.storeproject.adapter.SearchLinearLayoutAdapter;
+import com.example.storeproject.bean.HomeBean;
+import com.example.storeproject.contract.Contract;
+import com.example.storeproject.persenter.HomePresenter;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment<HomePresenter> implements BaseView, Contract.IHomeView {
 
     private RecyclerView rv;
     private VirtualLayoutManager virtualLayoutManager;
     private RecyclerView.RecycledViewPool pool;
     private SearchLinearLayoutAdapter searchLinearLayoutAdapter;
+    private DelegateAdapter adapter;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        initView(view);
-        initData();
-        initListener();
-        return view;
-    }
 
-    private void initListener() {
+    public void initListener() {
         //首页 搜索框 监听
         searchLinearLayoutAdapter.setOnClickItemListener(new SearchLinearLayoutAdapter.OnClickItemListener() {
             @Override
@@ -44,7 +40,12 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void initData() {
+    @Override
+    protected int getLayout() {
+        return R.layout.fragment_home;
+    }
+
+    public void initData() {
         //首页 搜索框
         LinearLayoutHelper search_linearLayoutHelper = new LinearLayoutHelper();
         search_linearLayoutHelper.setItemCount(1);// 设置布局里Item个数
@@ -55,6 +56,9 @@ public class HomeFragment extends Fragment {
         searchLinearLayoutAdapter = new SearchLinearLayoutAdapter(getActivity(),search_linearLayoutHelper);
 
 
+        //首页 第二个 模块 Banner
+
+            
 
 
 
@@ -62,18 +66,37 @@ public class HomeFragment extends Fragment {
 
 
 
-        DelegateAdapter adapter = new DelegateAdapter(virtualLayoutManager, true);
+
+
+
+
+
+        adapter = new DelegateAdapter(virtualLayoutManager, true);
         adapter.addAdapter(searchLinearLayoutAdapter);
-
         rv.setAdapter(adapter);
     }
 
-    private void initView(View view) {
+    public void initView(View view) {
         rv = view.findViewById(R.id.rv_home);
         virtualLayoutManager = new VirtualLayoutManager(getActivity());
         rv.setLayoutManager(virtualLayoutManager);
         pool = new RecyclerView.RecycledViewPool();
         rv.setRecycledViewPool(pool);
         pool.setMaxRecycledViews(0, 10);
+    }
+
+    @Override
+    protected HomePresenter getPresenter() {
+        return new HomePresenter();
+    }
+
+    @Override
+    public void OnSuccess(HomeBean.DataBean bean) {
+
+    }
+
+    @Override
+    public void onFail(String err) {
+
     }
 }

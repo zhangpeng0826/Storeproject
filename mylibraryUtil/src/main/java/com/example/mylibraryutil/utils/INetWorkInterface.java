@@ -1,6 +1,6 @@
-package com.example.storeproject.utils;
+package com.example.mylibraryutil.utils;
 
-import com.example.storeproject.callback.HttpCallback;
+import com.example.mylibraryutil.callback.HttpCallback;
 
 import java.util.HashMap;
 

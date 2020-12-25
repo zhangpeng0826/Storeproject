@@ -1,4 +1,4 @@
-package com.example.storeproject.callback;
+package com.example.mylibraryutil.callback;
 
 public interface HttpCallback<T> {
     void OnSuccess(T t);

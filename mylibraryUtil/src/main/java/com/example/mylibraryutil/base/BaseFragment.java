@@ -1,4 +1,4 @@
-package com.example.storeproject.base;
+package com.example.mylibraryutil.base;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-public abstract class BaseFragment<T> extends Fragment {
+public abstract class BaseFragment<T> extends Fragment implements BaseView{
     private T presenter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
