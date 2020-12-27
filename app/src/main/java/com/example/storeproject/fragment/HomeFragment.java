@@ -15,25 +15,40 @@ import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.example.mylibraryutil.base.BaseFragment;
 import com.example.mylibraryutil.base.BaseView;
 import com.example.storeproject.R;
-import com.example.storeproject.adapter.BannerLinearLayoutAdapter;
-import com.example.storeproject.adapter.Brand_markLineraLayoutAdapter;
-import com.example.storeproject.adapter.ChannelColumnAdapter;
-import com.example.storeproject.adapter.Living_at_home_GridLayoutAdapter;
-import com.example.storeproject.adapter.Living_at_home_title_LineraLayoutAdapter;
-import com.example.storeproject.adapter.Make_gridLayoutAdapter;
-import com.example.storeproject.adapter.New_product_LineraLayoutAdapter;
-import com.example.storeproject.adapter.Popularity_LineraLayoutAdapter;
-import com.example.storeproject.adapter.Product_gridLayoutAdapter;
-import com.example.storeproject.adapter.Project_selection_LineraLayoutAdapter;
-import com.example.storeproject.adapter.Recommend_LineraLayoutAdapter;
-import com.example.storeproject.adapter.SearchLinearLayoutAdapter;
-import com.example.storeproject.adapter.TopicLayoutAdapter;
+import com.example.storeproject.homeadapter.Baby_clothes_gridLayoutHelperGridLayoutAdapter;
+import com.example.storeproject.homeadapter.Baby_clothes_title_LineraLayoutAdapter;
+import com.example.storeproject.homeadapter.BannerLinearLayoutAdapter;
+import com.example.storeproject.homeadapter.Brand_markLineraLayoutAdapter;
+import com.example.storeproject.homeadapter.Catering_gridLayoutHelperGridLayoutAdapter;
+import com.example.storeproject.homeadapter.Catering_title_LineraLayoutAdapter;
+import com.example.storeproject.homeadapter.ChannelColumnAdapter;
+import com.example.storeproject.homeadapter.Clothing_LineraLayoutAdapter;
+import com.example.storeproject.homeadapter.Clothing_gridLayoutHelperGridLayoutAdapter;
+import com.example.storeproject.homeadapter.Eat_hutch_GridLayoutAdapter;
+import com.example.storeproject.homeadapter.Eat_hutch_title_LineraLayoutAdapter;
+import com.example.storeproject.homeadapter.Inclination_gridLayoutHelperGridLayoutAdapter;
+import com.example.storeproject.homeadapter.Inclination_title_LineraLayoutAdapter;
+import com.example.storeproject.homeadapter.Living_at_home_GridLayoutAdapter;
+import com.example.storeproject.homeadapter.Living_at_home_title_LineraLayoutAdapter;
+import com.example.storeproject.homeadapter.Make_gridLayoutAdapter;
+import com.example.storeproject.homeadapter.New_product_LineraLayoutAdapter;
+import com.example.storeproject.homeadapter.Parts_gridLayoutHelperGridLayoutAdapter;
+import com.example.storeproject.homeadapter.Parts_title_LineraLayoutAdapter;
+import com.example.storeproject.homeadapter.Personal_care_gridLayoutHelperGridLayoutAdapter;
+import com.example.storeproject.homeadapter.Personal_care_title_LineraLayoutAdapter;
+import com.example.storeproject.homeadapter.Popularity_LineraLayoutAdapter;
+import com.example.storeproject.homeadapter.Product_gridLayoutAdapter;
+import com.example.storeproject.homeadapter.Project_selection_LineraLayoutAdapter;
+import com.example.storeproject.homeadapter.Recommend_LineraLayoutAdapter;
+import com.example.storeproject.homeadapter.SearchLinearLayoutAdapter;
+import com.example.storeproject.homeadapter.Sundry_goods_gridLayoutHelperGridLayoutAdapter;
+import com.example.storeproject.homeadapter.Sundry_goods_title_LineraLayoutAdapter;
+import com.example.storeproject.homeadapter.TopicLayoutAdapter;
 import com.example.storeproject.bean.HomeBean;
 import com.example.storeproject.contract.Contract;
 import com.example.storeproject.persenter.HomePresenter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class HomeFragment extends BaseFragment<HomePresenter> implements BaseView, Contract.IHomeView {
 
@@ -61,6 +76,22 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
     private Living_at_home_title_LineraLayoutAdapter living_at_home_title_LineraLayoutAdapter;
     private Living_at_home_GridLayoutAdapter living_at_home_gridLayoutAdapter;
     private ArrayList<HomeBean.DataBean.CategoryListBean> homeListBeans;
+    private Eat_hutch_title_LineraLayoutAdapter eat_hutch_title_LineraLayoutAdapter;
+    private Eat_hutch_GridLayoutAdapter eat_hutch_gridLayoutAdapter;
+    private Catering_title_LineraLayoutAdapter catering_title_LineraLayoutAdapter;
+    private Catering_gridLayoutHelperGridLayoutAdapter catering_gridLayoutHelpergridLayoutAdapter;
+    private Parts_title_LineraLayoutAdapter parts_title_LineraLayoutAdapter;
+    private Parts_gridLayoutHelperGridLayoutAdapter parts_gridLayoutHelpergridLayoutAdapter;
+    private Clothing_LineraLayoutAdapter clothing_LineraLayoutAdapter;
+    private Clothing_gridLayoutHelperGridLayoutAdapter clothing_gridLayoutHelpergridLayoutAdapter;
+    private Baby_clothes_title_LineraLayoutAdapter baby_clothes_title_LineraLayoutAdapter;
+    private Baby_clothes_gridLayoutHelperGridLayoutAdapter baby_clothes_gridLayoutHelpergridLayoutAdapter;
+    private Sundry_goods_title_LineraLayoutAdapter sundry_goods_title_LineraLayoutAdapter;
+    private Sundry_goods_gridLayoutHelperGridLayoutAdapter sundry_goods_gridLayoutHelpergridLayoutAdapter;
+    private Personal_care_title_LineraLayoutAdapter personal_care_title_LineraLayoutAdapter;
+    private Personal_care_gridLayoutHelperGridLayoutAdapter personal_care_gridLayoutHelpergridLayoutAdapter;
+    private Inclination_title_LineraLayoutAdapter inclination_title_LineraLayoutAdapter;
+    private Inclination_gridLayoutHelperGridLayoutAdapter inclination_gridLayoutHelpergridLayoutAdapter;
 
 
     public void initListener() {
@@ -139,15 +170,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
             }
         });
 
-        //第七个 文字 居家 监听
-        living_at_home_title_LineraLayoutAdapter.setOnClickItemListener(new Living_at_home_title_LineraLayoutAdapter.OnClickItemListener() {
-            @Override
-            public void onClick(int position) {
 
-            }
-        });
-
-        //第七个 居家 监听
+        //第八个 居家 监听
         living_at_home_gridLayoutAdapter.setOnClickItemListener(new Living_at_home_GridLayoutAdapter.OnClickItemListener() {
             @Override
             public void onClick(int position) {
@@ -155,9 +179,65 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
             }
         });
 
-        //第七个 文字 餐厨 监听
+        //第九个 餐厨 监听
+        eat_hutch_gridLayoutAdapter.setOnClickItemListener(new Eat_hutch_GridLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+
+        //第十个 饮食 监听
+        catering_gridLayoutHelpergridLayoutAdapter.setOnClickItemListener(new Catering_gridLayoutHelperGridLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+        //第十一个 配件 监听
+        parts_gridLayoutHelpergridLayoutAdapter.setOnClickItemListener(new Parts_gridLayoutHelperGridLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+
+        //第十二个 服装 监听
+        clothing_gridLayoutHelpergridLayoutAdapter.setOnClickItemListener(new Clothing_gridLayoutHelperGridLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+        //第十三个 婴童 监听
+        baby_clothes_gridLayoutHelpergridLayoutAdapter.setOnClickItemListener(new Baby_clothes_gridLayoutHelperGridLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
 
 
+        sundry_goods_gridLayoutHelpergridLayoutAdapter.setOnClickItemListener(new Sundry_goods_gridLayoutHelperGridLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+
+        personal_care_gridLayoutHelpergridLayoutAdapter.setOnClickItemListener(new Personal_care_gridLayoutHelperGridLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+
+        inclination_gridLayoutHelpergridLayoutAdapter.setOnClickItemListener(new Inclination_gridLayoutHelperGridLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
     }
 
     @Override
@@ -254,7 +334,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
         topoc_gridLayoutHelper.setItemCount(2);
         topicLayoutAdapter = new TopicLayoutAdapter(topicListDTOS, getActivity(), topoc_gridLayoutHelper);
 
-
+        //下面布局全部的数据
+        homeListBeans = new ArrayList<>();
 
         //第八个 文字 居家
         LinearLayoutHelper living_at_home_title_linearLayoutHelper = new LinearLayoutHelper();
@@ -262,8 +343,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
         new_product_linearLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
         living_at_home_title_LineraLayoutAdapter = new Living_at_home_title_LineraLayoutAdapter(getActivity(), living_at_home_title_linearLayoutHelper);
 
-        //下面布局全部的数据
-        homeListBeans = new ArrayList<>();
 
         //第八个 居家
         GridLayoutHelper living_at_home_gridLayoutHelper = new GridLayoutHelper(2);
@@ -275,15 +354,130 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
         living_at_home_gridLayoutAdapter = new Living_at_home_GridLayoutAdapter(getActivity(), living_at_home_gridLayoutHelper, homeListBeans);
 
 
+        //第九个 文字 餐厨
+        LinearLayoutHelper eat_hutch_title_linearLayoutHelper = new LinearLayoutHelper();
+        new_product_linearLayoutHelper.setItemCount(1);// 设置布局里Item个数
+        new_product_linearLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        eat_hutch_title_LineraLayoutAdapter = new Eat_hutch_title_LineraLayoutAdapter(getActivity(), eat_hutch_title_linearLayoutHelper);
 
 
+        //第九个 餐厨
+        GridLayoutHelper eat_hutch_gridLayoutHelper = new GridLayoutHelper(2);
+        make_gridLayoutHelper.setItemCount(7);// 设置布局里Item个数
+        make_gridLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        make_gridLayoutHelper.setWeights(new float[]{50, 50});//设置每行中 每个网格宽度 占 每行总宽度 的比例
+        make_gridLayoutHelper.setAutoExpand(false);//是否自动填充空白区域
+        make_gridLayoutHelper.setSpanCount(2);// 设置每行多少个网格
+        eat_hutch_gridLayoutAdapter = new Eat_hutch_GridLayoutAdapter(getActivity(), eat_hutch_gridLayoutHelper, homeListBeans);
 
 
+         //第十个 文字 饮食
+        LinearLayoutHelper catering_title_linearLayoutHelper = new LinearLayoutHelper();
+        new_product_linearLayoutHelper.setItemCount(1);// 设置布局里Item个数
+        new_product_linearLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        catering_title_LineraLayoutAdapter = new Catering_title_LineraLayoutAdapter(getActivity(), catering_title_linearLayoutHelper);
 
 
+        //第十个 饮食
+        GridLayoutHelper catering_gridLayoutHelper = new GridLayoutHelper(2);
+        make_gridLayoutHelper.setItemCount(7);// 设置布局里Item个数
+        make_gridLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        make_gridLayoutHelper.setWeights(new float[]{50, 50});//设置每行中 每个网格宽度 占 每行总宽度 的比例
+        make_gridLayoutHelper.setAutoExpand(false);//是否自动填充空白区域
+        make_gridLayoutHelper.setSpanCount(2);// 设置每行多少个网格
+        catering_gridLayoutHelpergridLayoutAdapter = new Catering_gridLayoutHelperGridLayoutAdapter(getActivity(), catering_gridLayoutHelper, homeListBeans);
 
 
+        //第十一个 文字 配件
+        LinearLayoutHelper parts_title_linearLayoutHelper = new LinearLayoutHelper();
+        new_product_linearLayoutHelper.setItemCount(1);// 设置布局里Item个数
+        new_product_linearLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        parts_title_LineraLayoutAdapter = new Parts_title_LineraLayoutAdapter(getActivity(), parts_title_linearLayoutHelper);
 
+        //第十一个 配件
+        GridLayoutHelper parts_gridLayoutHelper = new GridLayoutHelper(2);
+        make_gridLayoutHelper.setItemCount(7);// 设置布局里Item个数
+        make_gridLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        make_gridLayoutHelper.setWeights(new float[]{50, 50});//设置每行中 每个网格宽度 占 每行总宽度 的比例
+        make_gridLayoutHelper.setAutoExpand(false);//是否自动填充空白区域
+        make_gridLayoutHelper.setSpanCount(2);// 设置每行多少个网格
+        parts_gridLayoutHelpergridLayoutAdapter = new Parts_gridLayoutHelperGridLayoutAdapter(getActivity(), parts_gridLayoutHelper, homeListBeans);
+
+        //第十二个 文字 服装
+        LinearLayoutHelper clothing_title_linearLayoutHelper = new LinearLayoutHelper();
+        new_product_linearLayoutHelper.setItemCount(1);// 设置布局里Item个数
+        new_product_linearLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        clothing_LineraLayoutAdapter = new Clothing_LineraLayoutAdapter(getActivity(), clothing_title_linearLayoutHelper);
+
+
+        //第十二个 服装
+        GridLayoutHelper clothing_gridLayoutHelper = new GridLayoutHelper(2);
+        make_gridLayoutHelper.setItemCount(7);// 设置布局里Item个数
+        make_gridLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        make_gridLayoutHelper.setWeights(new float[]{50, 50});//设置每行中 每个网格宽度 占 每行总宽度 的比例
+        make_gridLayoutHelper.setAutoExpand(false);//是否自动填充空白区域
+        make_gridLayoutHelper.setSpanCount(2);// 设置每行多少个网格
+        clothing_gridLayoutHelpergridLayoutAdapter = new Clothing_gridLayoutHelperGridLayoutAdapter(getActivity(), clothing_gridLayoutHelper, homeListBeans);
+
+        //第十三个 文字 婴童
+        LinearLayoutHelper baby_clothes_title_linearLayoutHelper = new LinearLayoutHelper();
+        new_product_linearLayoutHelper.setItemCount(1);// 设置布局里Item个数
+        new_product_linearLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        baby_clothes_title_LineraLayoutAdapter = new Baby_clothes_title_LineraLayoutAdapter(getActivity(), baby_clothes_title_linearLayoutHelper);
+
+        //第十三个 婴童
+        GridLayoutHelper baby_clothes_gridLayoutHelper = new GridLayoutHelper(2);
+        make_gridLayoutHelper.setItemCount(7);// 设置布局里Item个数
+        make_gridLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        make_gridLayoutHelper.setWeights(new float[]{50, 50});//设置每行中 每个网格宽度 占 每行总宽度 的比例
+        make_gridLayoutHelper.setAutoExpand(false);//是否自动填充空白区域
+        make_gridLayoutHelper.setSpanCount(2);// 设置每行多少个网格
+        baby_clothes_gridLayoutHelpergridLayoutAdapter = new Baby_clothes_gridLayoutHelperGridLayoutAdapter(getActivity(), baby_clothes_gridLayoutHelper, homeListBeans);
+
+        //第十四个 文字 杂货
+        LinearLayoutHelper sundry_goods_title_linearLayoutHelper = new LinearLayoutHelper();
+        new_product_linearLayoutHelper.setItemCount(1);// 设置布局里Item个数
+        new_product_linearLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        sundry_goods_title_LineraLayoutAdapter = new Sundry_goods_title_LineraLayoutAdapter(getActivity(), sundry_goods_title_linearLayoutHelper);
+
+        //第十四个 杂货
+        GridLayoutHelper sundry_goods_gridLayoutHelper = new GridLayoutHelper(2);
+        make_gridLayoutHelper.setItemCount(7);// 设置布局里Item个数
+        make_gridLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        make_gridLayoutHelper.setWeights(new float[]{50, 50});//设置每行中 每个网格宽度 占 每行总宽度 的比例
+        make_gridLayoutHelper.setAutoExpand(false);//是否自动填充空白区域
+        make_gridLayoutHelper.setSpanCount(2);// 设置每行多少个网格
+        sundry_goods_gridLayoutHelpergridLayoutAdapter = new Sundry_goods_gridLayoutHelperGridLayoutAdapter(getActivity(), sundry_goods_gridLayoutHelper, homeListBeans);
+
+        //第十五个 文字 洗护
+        LinearLayoutHelper personal_care_title_linearLayoutHelper = new LinearLayoutHelper();
+        new_product_linearLayoutHelper.setItemCount(1);// 设置布局里Item个数
+        new_product_linearLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        personal_care_title_LineraLayoutAdapter = new Personal_care_title_LineraLayoutAdapter(getActivity(), personal_care_title_linearLayoutHelper);
+
+        //第十五个 洗护
+        GridLayoutHelper personal_care_gridLayoutHelper = new GridLayoutHelper(2);
+        make_gridLayoutHelper.setItemCount(7);// 设置布局里Item个数
+        make_gridLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        make_gridLayoutHelper.setWeights(new float[]{50, 50});//设置每行中 每个网格宽度 占 每行总宽度 的比例
+        make_gridLayoutHelper.setAutoExpand(false);//是否自动填充空白区域
+        make_gridLayoutHelper.setSpanCount(2);// 设置每行多少个网格
+        personal_care_gridLayoutHelpergridLayoutAdapter = new Personal_care_gridLayoutHelperGridLayoutAdapter(getActivity(), personal_care_gridLayoutHelper, homeListBeans);
+
+        //第十六个 文字 志趣
+        LinearLayoutHelper inclination_title_linearLayoutHelper = new LinearLayoutHelper();
+        new_product_linearLayoutHelper.setItemCount(1);// 设置布局里Item个数
+        new_product_linearLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        inclination_title_LineraLayoutAdapter = new Inclination_title_LineraLayoutAdapter(getActivity(), inclination_title_linearLayoutHelper);
+
+        //第十六个 志趣
+        GridLayoutHelper inclination_gridLayoutHelper = new GridLayoutHelper(2);
+        make_gridLayoutHelper.setItemCount(7);// 设置布局里Item个数
+        make_gridLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        make_gridLayoutHelper.setWeights(new float[]{50, 50});//设置每行中 每个网格宽度 占 每行总宽度 的比例
+        make_gridLayoutHelper.setAutoExpand(false);//是否自动填充空白区域
+        make_gridLayoutHelper.setSpanCount(2);// 设置每行多少个网格
+        inclination_gridLayoutHelpergridLayoutAdapter = new Inclination_gridLayoutHelperGridLayoutAdapter(getActivity(), inclination_gridLayoutHelper, homeListBeans);
 
         adapter = new DelegateAdapter(virtualLayoutManager, false);
         adapter.addAdapter(searchLinearLayoutAdapter);
@@ -299,6 +493,22 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
         adapter.addAdapter(topicLayoutAdapter);
         adapter.addAdapter(living_at_home_title_LineraLayoutAdapter);
         adapter.addAdapter(living_at_home_gridLayoutAdapter);
+        adapter.addAdapter(eat_hutch_title_LineraLayoutAdapter);
+        adapter.addAdapter(eat_hutch_gridLayoutAdapter);
+        adapter.addAdapter(catering_title_LineraLayoutAdapter);
+        adapter.addAdapter(catering_gridLayoutHelpergridLayoutAdapter);
+        adapter.addAdapter(parts_title_LineraLayoutAdapter);
+        adapter.addAdapter(parts_gridLayoutHelpergridLayoutAdapter);
+        adapter.addAdapter(clothing_LineraLayoutAdapter);
+        adapter.addAdapter(clothing_gridLayoutHelpergridLayoutAdapter);
+        adapter.addAdapter(baby_clothes_title_LineraLayoutAdapter);
+        adapter.addAdapter(baby_clothes_gridLayoutHelpergridLayoutAdapter);
+        adapter.addAdapter(sundry_goods_title_LineraLayoutAdapter);
+        adapter.addAdapter(sundry_goods_gridLayoutHelpergridLayoutAdapter);
+        adapter.addAdapter(personal_care_title_LineraLayoutAdapter);
+        adapter.addAdapter(personal_care_gridLayoutHelpergridLayoutAdapter);
+        adapter.addAdapter(inclination_title_LineraLayoutAdapter);
+        adapter.addAdapter(inclination_gridLayoutHelpergridLayoutAdapter);
         rv.setAdapter(adapter);
     }
 
@@ -332,8 +542,17 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
         topicListDTOS.addAll(bean.getTopicList());
         topicLayoutAdapter.notifyDataSetChanged();
         homeListBeans.addAll(bean.getCategoryList());
-        living_at_home_gridLayoutAdapter.notifyDataSetChanged();
 
+
+        living_at_home_gridLayoutAdapter.notifyDataSetChanged();
+        eat_hutch_gridLayoutAdapter.notifyDataSetChanged();
+        catering_gridLayoutHelpergridLayoutAdapter.notifyDataSetChanged();
+        parts_gridLayoutHelpergridLayoutAdapter.notifyDataSetChanged();
+        clothing_gridLayoutHelpergridLayoutAdapter.notifyDataSetChanged();
+        baby_clothes_gridLayoutHelpergridLayoutAdapter.notifyDataSetChanged();
+        sundry_goods_gridLayoutHelpergridLayoutAdapter.notifyDataSetChanged();
+        personal_care_gridLayoutHelpergridLayoutAdapter.notifyDataSetChanged();
+        inclination_gridLayoutHelpergridLayoutAdapter.notifyDataSetChanged();
         adapter.notifyDataSetChanged();
     }
 

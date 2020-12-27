@@ -1,4 +1,4 @@
-package com.example.storeproject.adapter;
+package com.example.storeproject.homeadapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
-import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.example.storeproject.R;
 import com.example.storeproject.bean.HomeBean;
 

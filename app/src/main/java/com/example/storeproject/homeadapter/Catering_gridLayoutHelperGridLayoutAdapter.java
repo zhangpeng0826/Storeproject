@@ -1,4 +1,4 @@
-package com.example.storeproject.adapter;
+package com.example.storeproject.homeadapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -18,15 +18,14 @@ import com.example.storeproject.R;
 import com.example.storeproject.bean.HomeBean;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class Living_at_home_GridLayoutAdapter extends DelegateAdapter.Adapter<Living_at_home_GridLayoutAdapter.ViewHoldr> {
+public class Catering_gridLayoutHelperGridLayoutAdapter extends DelegateAdapter.Adapter<Catering_gridLayoutHelperGridLayoutAdapter.ViewHoldr> {
     private Context context;
     private GridLayoutHelper gridLayoutHelper;
     private ArrayList<HomeBean.DataBean.CategoryListBean> list;
 
 
-    public Living_at_home_GridLayoutAdapter(Context context, GridLayoutHelper gridLayoutHelper, ArrayList<HomeBean.DataBean.CategoryListBean> list) {
+    public Catering_gridLayoutHelperGridLayoutAdapter(Context context, GridLayoutHelper gridLayoutHelper, ArrayList<HomeBean.DataBean.CategoryListBean> list) {
         this.context = context;
         this.gridLayoutHelper = gridLayoutHelper;
         this.list = list;
@@ -46,7 +45,7 @@ public class Living_at_home_GridLayoutAdapter extends DelegateAdapter.Adapter<Li
 
     @Override
     public void onBindViewHolder(@NonNull ViewHoldr holder, int position) {
-        HomeBean.DataBean.CategoryListBean.GoodsListBean bean = list.get(0).getGoodsList().get(position);
+        HomeBean.DataBean.CategoryListBean.GoodsListBean bean = list.get(2).getGoodsList().get(position);
         Glide.with(context).load(bean.getList_pic_url()).into(holder.ivProductUrl);
         holder.tvProductName.setText(bean.getName());
         holder.tvProductPrice.setText("￥"+bean.getRetail_price());

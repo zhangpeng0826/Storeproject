@@ -1,4 +1,4 @@
-package com.example.storeproject.adapter;
+package com.example.storeproject.homeadapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -19,13 +19,13 @@ import com.example.storeproject.bean.HomeBean;
 
 import java.util.ArrayList;
 
-public class Product_gridLayoutAdapter extends DelegateAdapter.Adapter<Product_gridLayoutAdapter.ViewHoldr> {
+public class Sundry_goods_gridLayoutHelperGridLayoutAdapter extends DelegateAdapter.Adapter<Sundry_goods_gridLayoutHelperGridLayoutAdapter.ViewHoldr> {
     private Context context;
     private GridLayoutHelper gridLayoutHelper;
-    private ArrayList<HomeBean.DataBean.NewGoodsListBean> list;
+    private ArrayList<HomeBean.DataBean.CategoryListBean> list;
 
 
-    public Product_gridLayoutAdapter(Context context, GridLayoutHelper gridLayoutHelper, ArrayList<HomeBean.DataBean.NewGoodsListBean> list) {
+    public Sundry_goods_gridLayoutHelperGridLayoutAdapter(Context context, GridLayoutHelper gridLayoutHelper, ArrayList<HomeBean.DataBean.CategoryListBean> list) {
         this.context = context;
         this.gridLayoutHelper = gridLayoutHelper;
         this.list = list;
@@ -45,9 +45,10 @@ public class Product_gridLayoutAdapter extends DelegateAdapter.Adapter<Product_g
 
     @Override
     public void onBindViewHolder(@NonNull ViewHoldr holder, int position) {
-        Glide.with(context).load(list.get(position).getList_pic_url()).into(holder.ivProductUrl);
-        holder.tvProductName.setText(list.get(position).getName());
-        holder.tvProductPrice.setText("￥"+list.get(position).getRetail_price());
+        HomeBean.DataBean.CategoryListBean.GoodsListBean bean = list.get(6).getGoodsList().get(position);
+        Glide.with(context).load(bean.getList_pic_url()).into(holder.ivProductUrl);
+        holder.tvProductName.setText(bean.getName());
+        holder.tvProductPrice.setText("￥"+bean.getRetail_price());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +61,7 @@ public class Product_gridLayoutAdapter extends DelegateAdapter.Adapter<Product_g
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return 7;
     }
 
 

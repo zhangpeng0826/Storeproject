@@ -1,4 +1,4 @@
-package com.example.storeproject.adapter;
+package com.example.storeproject.homeadapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -19,13 +19,13 @@ import com.example.storeproject.bean.HomeBean;
 
 import java.util.ArrayList;
 
-public class Make_gridLayoutAdapter extends DelegateAdapter.Adapter<Make_gridLayoutAdapter.ViewHoldr> {
+public class Parts_gridLayoutHelperGridLayoutAdapter extends DelegateAdapter.Adapter<Parts_gridLayoutHelperGridLayoutAdapter.ViewHoldr> {
     private Context context;
     private GridLayoutHelper gridLayoutHelper;
-    private ArrayList<HomeBean.DataBean.BrandListBean> list;
+    private ArrayList<HomeBean.DataBean.CategoryListBean> list;
 
 
-    public Make_gridLayoutAdapter(Context context, GridLayoutHelper gridLayoutHelper, ArrayList<HomeBean.DataBean.BrandListBean> list) {
+    public Parts_gridLayoutHelperGridLayoutAdapter(Context context, GridLayoutHelper gridLayoutHelper, ArrayList<HomeBean.DataBean.CategoryListBean> list) {
         this.context = context;
         this.gridLayoutHelper = gridLayoutHelper;
         this.list = list;
@@ -39,19 +39,20 @@ public class Make_gridLayoutAdapter extends DelegateAdapter.Adapter<Make_gridLay
     @NonNull
     @Override
     public ViewHoldr onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_make_helper, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_product_helper, parent, false);
         return new ViewHoldr(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHoldr holder, int position) {
-        Glide.with(context).load(list.get(position).getNew_pic_url()).into(holder.ivMakeUrl);
-        holder.tvMakeName.setText(list.get(position).getName());
-        holder.tvMakePrice.setText(list.get(position).getFloor_price()+"");
+        HomeBean.DataBean.CategoryListBean.GoodsListBean bean = list.get(3).getGoodsList().get(position);
+        Glide.with(context).load(bean.getList_pic_url()).into(holder.ivProductUrl);
+        holder.tvProductName.setText(bean.getName());
+        holder.tvProductPrice.setText("￥"+bean.getRetail_price());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onClickItemListener!=null){
+                if (onClickItemListener != null) {
                     onClickItemListener.onClick(position);
                 }
             }
@@ -60,25 +61,27 @@ public class Make_gridLayoutAdapter extends DelegateAdapter.Adapter<Make_gridLay
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return 7;
     }
-
 
 
     public class ViewHoldr extends RecyclerView.ViewHolder {
-        private ImageView ivMakeUrl;
-        private TextView tvMakeName;
-        private TextView tvMakePrice;
+        private ImageView ivProductUrl;
+        private TextView tvProductName;
+        private TextView tvProductPrice;
+
         public ViewHoldr(@NonNull View itemView) {
             super(itemView);
-            ivMakeUrl = itemView.findViewById(R.id.iv_make_url);
-            tvMakeName = itemView.findViewById(R.id.tv_make_name);
-            tvMakePrice = itemView.findViewById(R.id.tv_make_price);
+            ivProductUrl = itemView.findViewById(R.id.iv_product_url);
+            tvProductName = itemView.findViewById(R.id.tv_product_name);
+            tvProductPrice = itemView.findViewById(R.id.tv_product_price);
         }
     }
-    public interface OnClickItemListener{
+
+    public interface OnClickItemListener {
         void onClick(int position);
     }
+
     private OnClickItemListener onClickItemListener;
 
     public void setOnClickItemListener(OnClickItemListener onClickItemListener) {

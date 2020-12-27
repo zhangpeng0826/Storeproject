@@ -1,4 +1,4 @@
-package com.example.storeproject.adapter;
+package com.example.storeproject.homeadapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,11 +13,11 @@ import com.alibaba.android.vlayout.LayoutHelper;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.example.storeproject.R;
 
-public class New_product_LineraLayoutAdapter extends DelegateAdapter.Adapter<New_product_LineraLayoutAdapter.ViewHolder> {
+public class Living_at_home_title_LineraLayoutAdapter extends DelegateAdapter.Adapter<Living_at_home_title_LineraLayoutAdapter.ViewHolder> {
     private Context context;
     private LinearLayoutHelper linearLayoutHelper;
 
-    public New_product_LineraLayoutAdapter(Context context, LinearLayoutHelper linearLayoutHelper) {
+    public Living_at_home_title_LineraLayoutAdapter(Context context, LinearLayoutHelper linearLayoutHelper) {
         this.context = context;
         this.linearLayoutHelper = linearLayoutHelper;
     }
@@ -30,20 +30,20 @@ public class New_product_LineraLayoutAdapter extends DelegateAdapter.Adapter<New
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_newproduct_helper, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_living_home_helper, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-       holder.itemView.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               if (onClickItemListener!=null){
-                   onClickItemListener.onClick(position);
-               }
-           }
-       });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onClickItemListener!=null){
+                    onClickItemListener.onClick(position);
+                }
+            }
+        });
     }
 
     @Override

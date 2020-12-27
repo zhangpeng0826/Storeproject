@@ -1,4 +1,4 @@
-package com.example.storeproject.adapter;
+package com.example.storeproject.homeadapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,11 +13,11 @@ import com.alibaba.android.vlayout.LayoutHelper;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.example.storeproject.R;
 
-public class Project_selection_LineraLayoutAdapter extends DelegateAdapter.Adapter<Project_selection_LineraLayoutAdapter.ViewHolder> {
+public class Sundry_goods_title_LineraLayoutAdapter extends DelegateAdapter.Adapter<Sundry_goods_title_LineraLayoutAdapter.ViewHolder> {
     private Context context;
     private LinearLayoutHelper linearLayoutHelper;
 
-    public Project_selection_LineraLayoutAdapter(Context context, LinearLayoutHelper linearLayoutHelper) {
+    public Sundry_goods_title_LineraLayoutAdapter(Context context, LinearLayoutHelper linearLayoutHelper) {
         this.context = context;
         this.linearLayoutHelper = linearLayoutHelper;
     }
@@ -30,7 +30,7 @@ public class Project_selection_LineraLayoutAdapter extends DelegateAdapter.Adapt
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_project_selection_helper, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_sundry_title_helper, parent, false);
         return new ViewHolder(view);
     }
 
