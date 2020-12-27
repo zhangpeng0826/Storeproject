@@ -19,6 +19,10 @@ import com.example.storeproject.adapter.BannerLinearLayoutAdapter;
 import com.example.storeproject.adapter.Brand_markLineraLayoutAdapter;
 import com.example.storeproject.adapter.ChannelColumnAdapter;
 import com.example.storeproject.adapter.Make_gridLayoutAdapter;
+import com.example.storeproject.adapter.New_product_LineraLayoutAdapter;
+import com.example.storeproject.adapter.Popularity_LineraLayoutAdapter;
+import com.example.storeproject.adapter.Product_gridLayoutAdapter;
+import com.example.storeproject.adapter.Recommend_LineraLayoutAdapter;
 import com.example.storeproject.adapter.SearchLinearLayoutAdapter;
 import com.example.storeproject.bean.HomeBean;
 import com.example.storeproject.contract.Contract;
@@ -40,6 +44,12 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
     private Brand_markLineraLayoutAdapter brand_markLineraLayoutAdapter;
     private ArrayList<HomeBean.DataBean.BrandListBean> brandList;
     private Make_gridLayoutAdapter make_gridLayoutAdapter;
+    private New_product_LineraLayoutAdapter new_product_LineraLayoutAdapter;
+    private ArrayList<HomeBean.DataBean.NewGoodsListBean> productList;
+    private Product_gridLayoutAdapter product_gridLayoutAdapter;
+    private Popularity_LineraLayoutAdapter popularity_LineraLayoutAdapter;
+    private Recommend_LineraLayoutAdapter recommend_LineraLayoutAdapter;
+    private ArrayList<HomeBean.DataBean.HotGoodsListBean> recommendlist;
 
 
     public void initListener() {
@@ -65,6 +75,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
                 Toast.makeText(getActivity(), brandList.get(position).getName(), Toast.LENGTH_SHORT).show();
             }
         });
+
 
     }
 
@@ -118,8 +129,37 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
 
 
 
+        //第五个 死文字 周一周四新品首发
+        LinearLayoutHelper new_product_linearLayoutHelper = new LinearLayoutHelper();
+        new_product_linearLayoutHelper.setItemCount(1);// 设置布局里Item个数
+        new_product_linearLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        new_product_LineraLayoutAdapter = new New_product_LineraLayoutAdapter(getActivity(), new_product_linearLayoutHelper);
 
 
+        //第五个 周一周四新品首发
+        productList = new ArrayList<>();
+        GridLayoutHelper product_gridLayoutHelper = new GridLayoutHelper(2);
+        make_gridLayoutHelper.setItemCount(4);// 设置布局里Item个数
+        make_gridLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        make_gridLayoutHelper.setWeights(new float[]{50, 50});//设置每行中 每个网格宽度 占 每行总宽度 的比例
+        make_gridLayoutHelper.setAutoExpand(false);//是否自动填充空白区域
+        make_gridLayoutHelper.setSpanCount(2);// 设置每行多少个网格
+        product_gridLayoutAdapter = new Product_gridLayoutAdapter(getActivity(), product_gridLayoutHelper, productList);
+
+
+        //第六个 死文字 人气推荐
+        LinearLayoutHelper popularity_linearLayoutHelper = new LinearLayoutHelper();
+        new_product_linearLayoutHelper.setItemCount(1);// 设置布局里Item个数
+        new_product_linearLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        popularity_LineraLayoutAdapter = new Popularity_LineraLayoutAdapter(getActivity(), popularity_linearLayoutHelper);
+
+
+        //第六个 人气推荐
+        recommendlist = new ArrayList<>();
+        LinearLayoutHelper recommend_linearLayoutHelper = new LinearLayoutHelper();
+        new_product_linearLayoutHelper.setItemCount(3);// 设置布局里Item个数
+        new_product_linearLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        recommend_LineraLayoutAdapter = new Recommend_LineraLayoutAdapter(getActivity(), recommend_linearLayoutHelper,recommendlist);
 
 
 
@@ -129,6 +169,10 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
         adapter.addAdapter(channelGridAdapter);
         adapter.addAdapter(brand_markLineraLayoutAdapter);
         adapter.addAdapter(make_gridLayoutAdapter);
+        adapter.addAdapter(new_product_LineraLayoutAdapter);
+        adapter.addAdapter(product_gridLayoutAdapter);
+        adapter.addAdapter(popularity_LineraLayoutAdapter);
+        adapter.addAdapter(recommend_LineraLayoutAdapter);
         rv.setAdapter(adapter);
     }
 
@@ -155,6 +199,10 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
         channelGridAdapter.notifyDataSetChanged();
         brandList.addAll(bean.getBrandList());
         make_gridLayoutAdapter.notifyDataSetChanged();
+        productList.addAll(bean.getNewGoodsList());
+        product_gridLayoutAdapter.notifyDataSetChanged();
+        recommendlist.addAll(bean.getHotGoodsList());
+        recommend_LineraLayoutAdapter.notifyDataSetChanged();
         adapter.notifyDataSetChanged();
     }
 
