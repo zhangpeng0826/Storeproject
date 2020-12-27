@@ -1,4 +1,4 @@
-package com.example.littleapp.adapter;
+package com.example.storeproject.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,16 +12,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.littleapp.R;
-import com.example.littleapp.bean.HomeBean;
+
+import com.example.storeproject.R;
+import com.example.storeproject.bean.HomeBean;
 
 import java.util.ArrayList;
 
 public class TopicRecyAdapter extends RecyclerView.Adapter {
-    private ArrayList<HomeBean.DataDTO.TopicListDTO> list;
+    private ArrayList<HomeBean.DataBean.TopicListBean> list;
     private Context context;
 
-    public TopicRecyAdapter(ArrayList<HomeBean.DataDTO.TopicListDTO> list, Context context) {
+    public TopicRecyAdapter(ArrayList<HomeBean.DataBean.TopicListBean> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -37,14 +38,16 @@ public class TopicRecyAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (list.size() != 0) {
             TopicRecyViewHolder viewHolder = (TopicRecyViewHolder) holder;
-            HomeBean.DataDTO.TopicListDTO data = list.get(position);
+            HomeBean.DataBean.TopicListBean data = list.get(position);
             viewHolder.subtitle.setText(data.getSubtitle());
             viewHolder.title.setText(data.getTitle());
             viewHolder.priceInfo.setText("¥ " + data.getPrice_info() + "元起");
             String url = (data.getItem_pic_url().split(":"))[0] + "s:" + (data.getItem_pic_url().split(":"))[1];
-            Glide.with(context).load(url).into(viewHolder.itemPicUrl);
-            Log.e("TAG", "onBindViewHolder: " + url);
+            Glide.with(context).load(data.getItem_pic_url()).into(viewHolder.itemPicUrl);
+
         }
+
+
     }
 
     @Override
@@ -66,4 +69,5 @@ public class TopicRecyAdapter extends RecyclerView.Adapter {
             subtitle = (TextView) itemView.findViewById(R.id.subtitle);
         }
     }
+
 }

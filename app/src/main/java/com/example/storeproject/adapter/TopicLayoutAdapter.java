@@ -1,4 +1,4 @@
-package com.example.littleapp.adapter;
+package com.example.storeproject.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,17 +13,17 @@ import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
-import com.example.littleapp.R;
-import com.example.littleapp.bean.HomeBean;
+import com.example.storeproject.R;
+import com.example.storeproject.bean.HomeBean;
 
 import java.util.ArrayList;
 
 public class TopicLayoutAdapter extends DelegateAdapter.Adapter {
-    private ArrayList<HomeBean.DataDTO.TopicListDTO> list;
+    private ArrayList<HomeBean.DataBean.TopicListBean> list;
     private Context context;
     private GridLayoutHelper gridLayoutHelper;
 
-    public TopicLayoutAdapter(ArrayList<HomeBean.DataDTO.TopicListDTO> list, Context context, GridLayoutHelper gridLayoutHelper) {
+    public TopicLayoutAdapter(ArrayList<HomeBean.DataBean.TopicListBean> list, Context context, GridLayoutHelper gridLayoutHelper) {
         this.list = list;
         this.context = context;
         this.gridLayoutHelper = gridLayoutHelper;
@@ -43,11 +43,8 @@ public class TopicLayoutAdapter extends DelegateAdapter.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
-        if (viewType == 0) {
-            view = LayoutInflater.from(context).inflate(R.layout.layout_topic_title, parent, false);
-        } else {
+
             view = LayoutInflater.from(context).inflate(R.layout.layout_topic, parent, false);
-        }
         return new TopicViewHolder(view);
     }
 
@@ -67,7 +64,16 @@ public class TopicLayoutAdapter extends DelegateAdapter.Adapter {
                 recy.setLayoutManager(linearLayoutManager);
                 recy.setAdapter(topicRecyAdapter);
             }
+
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onClickItemListener!=null){
+                    onClickItemListener.onClick(position);
+                }
+            }
+        });
     }
 
     @Override
@@ -82,5 +88,13 @@ public class TopicLayoutAdapter extends DelegateAdapter.Adapter {
             super(itemView);
             topicRecy = (RecyclerView) itemView.findViewById(R.id.topic_recy);
         }
+    }
+    public interface OnClickItemListener{
+        void onClick(int position);
+    }
+    private OnClickItemListener onClickItemListener;
+
+    public void setOnClickItemListener(OnClickItemListener onClickItemListener) {
+        this.onClickItemListener = onClickItemListener;
     }
 }

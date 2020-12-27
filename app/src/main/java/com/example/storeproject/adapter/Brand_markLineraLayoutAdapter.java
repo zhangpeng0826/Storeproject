@@ -37,6 +37,14 @@ public class Brand_markLineraLayoutAdapter extends DelegateAdapter.Adapter<Brand
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onClickItemListener!=null){
+                    onClickItemListener.onClick(position);
+                }
+            }
+        });
     }
 
     @Override
@@ -47,5 +55,13 @@ public class Brand_markLineraLayoutAdapter extends DelegateAdapter.Adapter<Brand
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
+    }
+    public interface OnClickItemListener{
+        void onClick(int position);
+    }
+    private OnClickItemListener onClickItemListener;
+
+    public void setOnClickItemListener(OnClickItemListener onClickItemListener) {
+        this.onClickItemListener = onClickItemListener;
     }
 }

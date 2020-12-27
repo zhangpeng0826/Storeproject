@@ -22,8 +22,10 @@ import com.example.storeproject.adapter.Make_gridLayoutAdapter;
 import com.example.storeproject.adapter.New_product_LineraLayoutAdapter;
 import com.example.storeproject.adapter.Popularity_LineraLayoutAdapter;
 import com.example.storeproject.adapter.Product_gridLayoutAdapter;
+import com.example.storeproject.adapter.Project_selection_LineraLayoutAdapter;
 import com.example.storeproject.adapter.Recommend_LineraLayoutAdapter;
 import com.example.storeproject.adapter.SearchLinearLayoutAdapter;
+import com.example.storeproject.adapter.TopicLayoutAdapter;
 import com.example.storeproject.bean.HomeBean;
 import com.example.storeproject.contract.Contract;
 import com.example.storeproject.persenter.HomePresenter;
@@ -50,6 +52,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
     private Popularity_LineraLayoutAdapter popularity_LineraLayoutAdapter;
     private Recommend_LineraLayoutAdapter recommend_LineraLayoutAdapter;
     private ArrayList<HomeBean.DataBean.HotGoodsListBean> recommendlist;
+    private Project_selection_LineraLayoutAdapter project_selection_LineraLayoutAdapter;
+    private ArrayList<HomeBean.DataBean.TopicListBean> topicListDTOS;
+    private TopicLayoutAdapter topicLayoutAdapter;
 
 
     public void initListener() {
@@ -68,6 +73,15 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
                 Toast.makeText(getActivity(), channellist.get(position).getName(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        //第四个 文字 品牌制造商直供 监听
+        brand_markLineraLayoutAdapter.setOnClickItemListener(new Brand_markLineraLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+
         //第四个 品牌制造商直供 监听
         make_gridLayoutAdapter.setOnClickItemListener(new Make_gridLayoutAdapter.OnClickItemListener() {
             @Override
@@ -75,7 +89,49 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
                 Toast.makeText(getActivity(), brandList.get(position).getName(), Toast.LENGTH_SHORT).show();
             }
         });
+        //第五个 死文字 周一周四新品首发 监听
+        new_product_LineraLayoutAdapter.setOnClickItemListener(new New_product_LineraLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
 
+            }
+        });
+        //第五个 周一周四新品首发 监听
+        product_gridLayoutAdapter.setOnClickItemListener(new Product_gridLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+
+        //第六个 文字 人气推荐 监听
+        popularity_LineraLayoutAdapter.setOnClickItemListener(new Popularity_LineraLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+
+        //第六个 人气推荐 监听
+        recommend_LineraLayoutAdapter.setOnClickItemListener(new Recommend_LineraLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+        //第七个 文字 专题精选 监听
+        project_selection_LineraLayoutAdapter.setOnClickItemListener(new Project_selection_LineraLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+        //第七个  专题精选 监听
+        topicLayoutAdapter.setOnClickItemListener(new TopicLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+            }
+        });
 
     }
 
@@ -128,7 +184,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
         make_gridLayoutAdapter = new Make_gridLayoutAdapter(getActivity(), make_gridLayoutHelper, brandList);
 
 
-
         //第五个 死文字 周一周四新品首发
         LinearLayoutHelper new_product_linearLayoutHelper = new LinearLayoutHelper();
         new_product_linearLayoutHelper.setItemCount(1);// 设置布局里Item个数
@@ -159,7 +214,23 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
         LinearLayoutHelper recommend_linearLayoutHelper = new LinearLayoutHelper();
         new_product_linearLayoutHelper.setItemCount(3);// 设置布局里Item个数
         new_product_linearLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
-        recommend_LineraLayoutAdapter = new Recommend_LineraLayoutAdapter(getActivity(), recommend_linearLayoutHelper,recommendlist);
+        recommend_LineraLayoutAdapter = new Recommend_LineraLayoutAdapter(getActivity(), recommend_linearLayoutHelper, recommendlist);
+
+        //第七个 文字 专题精选
+        LinearLayoutHelper roject_selection_linearLayoutHelper = new LinearLayoutHelper();
+        new_product_linearLayoutHelper.setItemCount(1);// 设置布局里Item个数
+        new_product_linearLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        project_selection_LineraLayoutAdapter = new Project_selection_LineraLayoutAdapter(getActivity(), roject_selection_linearLayoutHelper);
+
+
+        //第七个 专题精选
+        topicListDTOS = new ArrayList<>();
+        GridLayoutHelper topoc_gridLayoutHelper = new GridLayoutHelper(1);
+        topoc_gridLayoutHelper.setItemCount(2);
+        topicLayoutAdapter = new TopicLayoutAdapter(topicListDTOS, getActivity(), topoc_gridLayoutHelper);
+
+
+
 
 
 
@@ -173,6 +244,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
         adapter.addAdapter(product_gridLayoutAdapter);
         adapter.addAdapter(popularity_LineraLayoutAdapter);
         adapter.addAdapter(recommend_LineraLayoutAdapter);
+        adapter.addAdapter(project_selection_LineraLayoutAdapter);
+        adapter.addAdapter(topicLayoutAdapter);
         rv.setAdapter(adapter);
     }
 
@@ -203,11 +276,13 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
         product_gridLayoutAdapter.notifyDataSetChanged();
         recommendlist.addAll(bean.getHotGoodsList());
         recommend_LineraLayoutAdapter.notifyDataSetChanged();
+        topicListDTOS.addAll(bean.getTopicList());
+        topicLayoutAdapter.notifyDataSetChanged();
         adapter.notifyDataSetChanged();
     }
 
     @Override
     public void onFail(String err) {
-        Log.e("TAG","首页网络异常====》"+err);
+        Log.e("TAG", "首页网络异常====》" + err);
     }
 }

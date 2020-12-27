@@ -13,11 +13,11 @@ import com.alibaba.android.vlayout.LayoutHelper;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.example.storeproject.R;
 
-public class Popularity_LineraLayoutAdapter extends DelegateAdapter.Adapter<Popularity_LineraLayoutAdapter.ViewHolder> {
+public class Project_selection_LineraLayoutAdapter extends DelegateAdapter.Adapter<Project_selection_LineraLayoutAdapter.ViewHolder> {
     private Context context;
     private LinearLayoutHelper linearLayoutHelper;
 
-    public Popularity_LineraLayoutAdapter(Context context, LinearLayoutHelper linearLayoutHelper) {
+    public Project_selection_LineraLayoutAdapter(Context context, LinearLayoutHelper linearLayoutHelper) {
         this.context = context;
         this.linearLayoutHelper = linearLayoutHelper;
     }
@@ -30,7 +30,7 @@ public class Popularity_LineraLayoutAdapter extends DelegateAdapter.Adapter<Popu
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_popularity_helper, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_project_selection_helper, parent, false);
         return new ViewHolder(view);
     }
 

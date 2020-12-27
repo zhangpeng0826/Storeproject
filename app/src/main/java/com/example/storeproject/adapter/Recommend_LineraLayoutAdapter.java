@@ -63,7 +63,7 @@ public class Recommend_LineraLayoutAdapter extends DelegateAdapter.Adapter<Recom
 
     @Override
     public int getItemCount() {
-        return 3;
+        return list.size();
     }
 
 
