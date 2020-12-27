@@ -18,6 +18,8 @@ import com.example.storeproject.R;
 import com.example.storeproject.adapter.BannerLinearLayoutAdapter;
 import com.example.storeproject.adapter.Brand_markLineraLayoutAdapter;
 import com.example.storeproject.adapter.ChannelColumnAdapter;
+import com.example.storeproject.adapter.Living_at_home_GridLayoutAdapter;
+import com.example.storeproject.adapter.Living_at_home_title_LineraLayoutAdapter;
 import com.example.storeproject.adapter.Make_gridLayoutAdapter;
 import com.example.storeproject.adapter.New_product_LineraLayoutAdapter;
 import com.example.storeproject.adapter.Popularity_LineraLayoutAdapter;
@@ -31,6 +33,7 @@ import com.example.storeproject.contract.Contract;
 import com.example.storeproject.persenter.HomePresenter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends BaseFragment<HomePresenter> implements BaseView, Contract.IHomeView {
 
@@ -55,6 +58,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
     private Project_selection_LineraLayoutAdapter project_selection_LineraLayoutAdapter;
     private ArrayList<HomeBean.DataBean.TopicListBean> topicListDTOS;
     private TopicLayoutAdapter topicLayoutAdapter;
+    private Living_at_home_title_LineraLayoutAdapter living_at_home_title_LineraLayoutAdapter;
+    private Living_at_home_GridLayoutAdapter living_at_home_gridLayoutAdapter;
+    private ArrayList<HomeBean.DataBean.CategoryListBean> homeListBeans;
 
 
     public void initListener() {
@@ -132,6 +138,25 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
             public void onClick(int position) {
             }
         });
+
+        //第七个 文字 居家 监听
+        living_at_home_title_LineraLayoutAdapter.setOnClickItemListener(new Living_at_home_title_LineraLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+
+        //第七个 居家 监听
+        living_at_home_gridLayoutAdapter.setOnClickItemListener(new Living_at_home_GridLayoutAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+
+        //第七个 文字 餐厨 监听
+
 
     }
 
@@ -231,6 +256,32 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
 
 
 
+        //第八个 文字 居家
+        LinearLayoutHelper living_at_home_title_linearLayoutHelper = new LinearLayoutHelper();
+        new_product_linearLayoutHelper.setItemCount(1);// 设置布局里Item个数
+        new_product_linearLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        living_at_home_title_LineraLayoutAdapter = new Living_at_home_title_LineraLayoutAdapter(getActivity(), living_at_home_title_linearLayoutHelper);
+
+        //下面布局全部的数据
+        homeListBeans = new ArrayList<>();
+
+        //第八个 居家
+        GridLayoutHelper living_at_home_gridLayoutHelper = new GridLayoutHelper(2);
+        make_gridLayoutHelper.setItemCount(7);// 设置布局里Item个数
+        make_gridLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        make_gridLayoutHelper.setWeights(new float[]{50, 50});//设置每行中 每个网格宽度 占 每行总宽度 的比例
+        make_gridLayoutHelper.setAutoExpand(false);//是否自动填充空白区域
+        make_gridLayoutHelper.setSpanCount(2);// 设置每行多少个网格
+        living_at_home_gridLayoutAdapter = new Living_at_home_GridLayoutAdapter(getActivity(), living_at_home_gridLayoutHelper, homeListBeans);
+
+
+
+
+
+
+
+
+
 
 
 
@@ -246,6 +297,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
         adapter.addAdapter(recommend_LineraLayoutAdapter);
         adapter.addAdapter(project_selection_LineraLayoutAdapter);
         adapter.addAdapter(topicLayoutAdapter);
+        adapter.addAdapter(living_at_home_title_LineraLayoutAdapter);
+        adapter.addAdapter(living_at_home_gridLayoutAdapter);
         rv.setAdapter(adapter);
     }
 
@@ -278,6 +331,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements BaseVie
         recommend_LineraLayoutAdapter.notifyDataSetChanged();
         topicListDTOS.addAll(bean.getTopicList());
         topicLayoutAdapter.notifyDataSetChanged();
+        homeListBeans.addAll(bean.getCategoryList());
+        living_at_home_gridLayoutAdapter.notifyDataSetChanged();
+
         adapter.notifyDataSetChanged();
     }
 
